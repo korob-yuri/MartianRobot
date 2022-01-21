@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MartianRobot/bin/Debug/net6.0
+/MartianRobot/obj
+/MartianRobot.Common/bin/Debug/net6.0
+/MartianRobot.Common/obj
+/MartianRobot.Models/bin/Debug/net6.0
+/MartianRobot.Models/obj
+/MartianRobot.Tests/bin/Debug/net6.0
+/MartianRobot.Tests/obj
