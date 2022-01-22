@@ -3,9 +3,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MartianRobot.Tests
 {
+    /// <summary>
+    /// Positoin class testrs
+    /// </summary>
     [TestClass]
     public class PositionTests
     {
+        /// <summary>
+        /// Test of proper postion validation
+        /// </summary>
         [TestMethod]
         public void ParseValidPosition()
         {
@@ -16,6 +22,9 @@ namespace MartianRobot.Tests
             Assert.IsTrue(position?.Item1.X == 4 && position?.Item1.Y == 3 && position?.Item1.Orientation == OrientationEnum.North);
         }
 
+        /// <summary>
+        /// Test of negative scenario of non-existing orientaion 
+        /// </summary>
         [TestMethod]
         public void ParseInvalidPosition()
         {
@@ -24,6 +33,9 @@ namespace MartianRobot.Tests
             Assert.IsNotNull(position?.Item2);
         }
 
+        /// <summary>
+        /// Test of negative scenario of out of grid boundries value
+        /// </summary>
         [TestMethod]
         public void ParseOutOfBoundriesPosition()
         {
@@ -32,6 +44,9 @@ namespace MartianRobot.Tests
             Assert.IsNotNull(position?.Item2);
         }
 
+        /// <summary>
+        /// Test of proper string formating functionality
+        /// </summary>
         [TestMethod]
         public void StringFormat()
         {

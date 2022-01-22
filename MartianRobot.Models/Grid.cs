@@ -2,15 +2,36 @@
 
 namespace MartianRobot.Models
 {
+    /// <summary>
+    /// Implementation of a grid
+    /// </summary>
     public class Grid
     {
+        /// <summary>
+        /// Maximum supported coordinates for the grid
+        /// </summary>
         public const int MAX_COORDINATE = 50;
 
+        /// <summary>
+        /// Upper corner of the grid
+        /// </summary>
         public int Upper { get; set; }
+
+        /// <summary>
+        /// Right corner of the grid
+        /// </summary>
         public int Right { get; set; }
 
+        /// <summary>
+        /// List of the moves after which the robots were lost
+        /// </summary>
         private List<MoveInfo> _lostMoves = new();
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="upper">Upper corner of the grid</param>
+        /// <param name="right">Right corner of the grid</param>
         public Grid(int upper, int right)
         {
             Upper = upper;
@@ -22,11 +43,19 @@ namespace MartianRobot.Models
             return (postion.X > Right) || (postion.Y > Upper);
         }
 
-        public void AddToLostMoves(MoveInfo moveInfo)
-        {
-            _lostMoves.Add(moveInfo);
-        }
-
+        /// <summary>
+        /// Parse a string to the grid object
+        /// 
+        /// Example:
+        /// 
+        /// var grid = Grid.Parse("5 3");
+        /// 
+        /// Result:
+        /// 
+        /// A grid object with Upper=5 and Right=3
+        /// </summary>
+        /// <param name="s">a string</param>
+        /// <returns>A grid object</returns>
         public static Tuple<Grid?, string?> Parse(string? s)
         {
             if (String.IsNullOrWhiteSpace(s))
@@ -57,11 +86,22 @@ namespace MartianRobot.Models
             return new Tuple<Grid?, string?>(new Grid(upper, right), null);
         }
 
+        /// <summary>
+        /// Save the last robot's scent if after the move, the robot will be lost
+        /// </summary>
+        /// <param name="position">The last valid robot's position</param>
+        /// <param name="command">A command that was applied after which the robot was lost</param>
         internal void SaveRobotsScent(Position position, CommandEnum command)
         {
             _lostMoves.Add(new MoveInfo() { Position = position, Command = command });
         }
 
+        /// <summary>
+        /// Validate if a robot will be lost after the move
+        /// </summary>
+        /// <param name="position">Current robot's position</param>
+        /// <param name="command">A command that will be applied</param>
+        /// <returns></returns>
         public bool WillLoseRobot(Position position, CommandEnum command)
         {
             return _lostMoves.Any(w => w.Position.X == position.X

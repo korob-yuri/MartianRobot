@@ -1,9 +1,18 @@
 ﻿namespace MartianRobot.Models.Commands
 {
+    /// <summary>
+    /// Implementation of forward command
+    /// </summary>
     public class ForwardCommand : BaseCommand
     {
+        /// <summary>
+        /// Name of a command as "Forward", encoded by char "F"
+        /// </summary>
         public override CommandEnum CommandName { get; } = CommandEnum.Forward;
 
+        /// <summary>
+        /// Execute the "forward" command on a position
+        /// </summary>
         public override Position Execute(Position position)
         {
             int newX = position.X;

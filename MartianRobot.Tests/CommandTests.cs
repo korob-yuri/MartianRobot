@@ -5,9 +5,15 @@ using System;
 
 namespace MartianRobot.Tests
 {
+    /// <summary>
+    /// Test command class
+    /// </summary>
     [TestClass]
     public class CommandTests
     {
+        /// <summary>
+        /// Validate that all enum values in the CommandEnum are registered 
+        /// </summary>
         [TestMethod]
         public void CommandRegistrations()
         {
@@ -17,6 +23,9 @@ namespace MartianRobot.Tests
             }
         }
 
+        /// <summary>
+        /// Validate parse functonality
+        /// </summary>
         [TestMethod]
         public void ParseValidCommands()
         {
@@ -25,6 +34,9 @@ namespace MartianRobot.Tests
             Assert.IsNull(commands?.Item2);
         }
 
+        /// <summary>
+        /// Test proper validation of maximum lenght of the input string
+        /// </summary>
         [TestMethod]
         public void ParseMaxLengthValidation()
         {
@@ -33,6 +45,9 @@ namespace MartianRobot.Tests
             Assert.IsNotNull(commands?.Item2);
         }
 
+        /// <summary>
+        /// Negative test scenartio of parse functonality validation, i.e. non-existing command in the input string
+        /// </summary>
         [TestMethod]
         public void ParseNonExistingCommands()
         {
@@ -41,6 +56,9 @@ namespace MartianRobot.Tests
             Assert.IsNotNull(commands?.Item2);
         }
 
+        /// <summary>
+        /// Test an empty string validation for the command parsing
+        /// </summary>
         [TestMethod]
         public void ParseEmptyCommands()
         {

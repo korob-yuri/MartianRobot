@@ -1,14 +1,18 @@
 ﻿using MartianRobot.Models;
 using MartianRobot.Models.Commands;
-using MartianRobot.Models.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace MartianRobot.Tests
 {
+    /// <summary>
+    /// Test of requirements implementation
+    /// </summary>    
     [TestClass]
     public class RequirementsTests
     {
+        /// <summary>
+        /// End-to-end test of the provided scenarios
+        /// </summary>
         [TestMethod]
         public void RequirementsEnd2EndTest()
         {
@@ -22,7 +26,7 @@ namespace MartianRobot.Tests
 
             Assert.IsNotNull(robotPosition);
 
-            var robot = RobotFactory.CreateRobotOnGrid(robotPosition, grid);
+            Robot robot = new (robotPosition, grid);
 
             CommandEnum[]? robotInstructions = BaseCommand.Parse("RFRFRFRF").Item1;
 
@@ -42,7 +46,7 @@ namespace MartianRobot.Tests
 
             Assert.IsNotNull(robotPosition);
 
-            robot = RobotFactory.CreateRobotOnGrid(robotPosition, grid);
+            robot = new(robotPosition, grid);
 
             robotInstructions = BaseCommand.Parse("FRRFLLFFRRFLL").Item1;
 
@@ -63,7 +67,7 @@ namespace MartianRobot.Tests
 
             Assert.IsNotNull(robotPosition);
 
-            robot = RobotFactory.CreateRobotOnGrid(robotPosition, grid);
+            robot = new(robotPosition, grid);
 
             robotInstructions = BaseCommand.Parse("LLFFFLFLFL").Item1;
 
@@ -79,6 +83,9 @@ namespace MartianRobot.Tests
             Assert.IsTrue(!robot.IsLost);
         }
 
+        /// <summary>
+        /// Test of the proper functionality of the logic for the lost robot senarios
+        /// </summary>
         [TestMethod]
         public void LostLogic()
         {
@@ -90,7 +97,7 @@ namespace MartianRobot.Tests
 
             Assert.IsNotNull(robotPosition);
 
-            var robot = RobotFactory.CreateRobotOnGrid(robotPosition, grid);
+            Robot robot = new(robotPosition, grid);
 
             CommandEnum[]? robotInstructions = BaseCommand.Parse("FFFLFRFLF").Item1;
 
@@ -110,7 +117,7 @@ namespace MartianRobot.Tests
 
             Assert.IsNotNull(robotPosition);
 
-            robot = RobotFactory.CreateRobotOnGrid(robotPosition, grid);
+            robot = new(robotPosition, grid);
 
             robotInstructions = BaseCommand.Parse("FFFLFRFLF").Item1;                                                   
 

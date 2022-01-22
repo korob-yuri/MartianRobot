@@ -1,14 +1,17 @@
 ﻿using MartianRobot.Models;
-using MartianRobot.Models.Commands;
-using MartianRobot.Models.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace MartianRobot.Tests
 {
+    /// <summary>
+    /// Robot class tests
+    /// </summary>
     [TestClass]
     public class RobotTests
     {
+        /// <summary>
+        /// Test of proper string formating functionality
+        /// </summary>
         [TestMethod]
         public void StringFormat()
         {
@@ -22,7 +25,7 @@ namespace MartianRobot.Tests
 
             Assert.IsNotNull(position);
 
-            var robot = RobotFactory.CreateRobotOnGrid(position.Item1, grid); 
+            Robot robot = new (position.Item1, grid);
 
             Assert.IsTrue(robot.ToString() == "5 3 N");
 

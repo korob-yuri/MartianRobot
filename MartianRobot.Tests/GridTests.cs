@@ -1,13 +1,17 @@
 ﻿using MartianRobot.Models;
-using MartianRobot.Models.Commands;
-using MartianRobot.Models.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MartianRobot.Tests
 {
+    /// <summary>
+    /// Grid class tests
+    /// </summary>
     [TestClass]
     public class GridTests
     {
+        /// <summary>
+        /// Test proper parsing functionality
+        /// </summary>
         [TestMethod]
         public void ParseValidGridDimensions()
         {
@@ -19,6 +23,9 @@ namespace MartianRobot.Tests
             Assert.IsTrue(grid?.Item1.Right == 3);
         }
 
+        /// <summary>
+        /// Test of negative scenario of exceeding maximum size of the grid
+        /// </summary>
         [TestMethod]
         public void ParseInvalidGridDimensions()
         {

@@ -14,6 +14,7 @@ Design
 - per requirements, "command" class was created in a way to easily extend it, to support additional types
 - based on the complexitiy of the project and formats of the user inputs, it is ok to use regular expressions for the parsing of the input
 - test coverage for the most important scenarios, including negative paths and edge cases
+- logic to be implemented as a part of models, to avoid unneceessary levels
 
 Estimations
 

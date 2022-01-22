@@ -2,8 +2,14 @@
 {
     public class LeftCommand : BaseCommand
     {
+        /// <summary>
+        /// Name of a command as "left", encoded by char "L"
+        /// </summary>
         public override CommandEnum CommandName { get; } = CommandEnum.Left;
 
+        /// <summary>
+        /// Execute the "left" command on a position
+        /// </summary>
         public override Position Execute(Position position)
         {
             OrientationEnum newOrientation = position.Orientation switch
